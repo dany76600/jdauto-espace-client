@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Police V13 — identique à @jdauto/design-tokens (fontImportUrl). CSS ne
+   peut pas importer une constante TypeScript directement ; cette valeur
+   est vérifiée identique à la source par script avant chaque livraison. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap');
+
+body {
+  /* Identique à @jdauto/design-tokens (colors.black, bodyBase) */
+  background: #030609;
+  color: #ffffff;
+  font-family: Inter, Montserrat, Arial, sans-serif;
+}
