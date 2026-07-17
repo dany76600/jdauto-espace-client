@@ -45,5 +45,12 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/:path*"],
+  // Corrigé le 17/07/2026 : le motif précédent ("/", "/:path*") interceptait
+  // absolument tout, y compris les fichiers CSS/JS internes de Next.js
+  // (/_next/static/...) — chaque demande de fichier CSS se faisait rediriger
+  // vers /connexion comme n'importe quelle autre page pour un visiteur non
+  // connecté, expliquant l'absence totale de style en production (le
+  // navigateur recevait du HTML à la place du CSS demandé). Motif standard
+  // Next.js : exclut les fichiers internes et les assets statiques courants.
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|css|js)$).*)"],
 };
